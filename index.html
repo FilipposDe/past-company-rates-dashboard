@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">The Big Five</div>
+        <form>
+            <input 
+                id="cik" 
+                type="text" 
+                name="cik" 
+                placeholder="."
+                minlength="5"
+                required    
+            >
+            <label for="cik">CIK</label>
+            <button type="submit">GET</button>
+        </form>        
+    </header>
+
+    
+    <main>
+
+        <div class="data-placeholder">Put in a company CIK!</div>
+
+        <div class="loading">
+            <div class="lds-grid">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <div class="errors"></div>
+
+        <section class="data">
+         
+            <!-- <canvas id="chart1" width="400" height="300"></canvas>
+            <canvas id="chart2" width="400" height="300"></canvas>
+            <canvas id="chart3" width="400" height="300"></canvas>
+            <canvas id="chart4" width="400" height="300"></canvas>
+            <canvas id="chart5" width="400" height="300"></canvas> -->
+            <div>
+                <!-- <canvas id="chart1" width="400" height="300"></canvas> -->
+                <canvas id="chart1"  ></canvas>
+            </div>
+
+            <div>
+                <canvas id="chart2"  ></canvas>
+                <!-- <canvas id="chart2" width="400" height="300"></canvas> -->
+            </div>
+
+            <div>
+                <canvas id="chart3"  ></canvas>
+                <!-- <canvas id="chart3" width="400" height="300"></canvas> -->
+            </div>
+
+            <div>
+                <canvas id="chart4"  ></canvas>
+                <!-- <canvas id="chart4" width="400" height="300"></canvas> -->
+            </div>
+
+            <div>
+                <canvas id="chart5"  ></canvas>
+                <!-- <canvas id="chart5" width="400" height="300"></canvas> -->
+            </div>
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+    <!-- <script src="https://unpkg.com/chartjs-plugin-colorschemes"></script> -->
+
+    <script src="chartjs-plugin-annotation.min.js"></script>
+
+    <script src="script.js"></script>
+  
+
+</body>
+</html>
