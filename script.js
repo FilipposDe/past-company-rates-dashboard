@@ -27,42 +27,49 @@ function mockData() {
     var res = {
         result: {
             '2020': {
-                'roic': '0.1',
+                'roic': '0.8',
                 'eps': '0.1',
                 'equity': '0.1',
                 'sales': '0.1',
                 'freeCashFlow': '0.1',
             },
             '2019': {
-                'roic': '0.1',
+                'roic': '0.8',
                 'eps': '0.1',
                 'equity': '0.1',
                 'sales': '0.1',
                 'freeCashFlow': '0.1',
             },
             '2018': {
-                'roic': '0.1',
+                'roic': '0.8',
                 'eps': '0.1',
                 'equity': '0.1',
                 'sales': '0.1',
                 'freeCashFlow': '0.1',
             },
             '2017': {
-                'roic': '0.1',
+                'roic': '0.8',
                 'eps': '0.1',
                 'equity': '0.1',
                 'sales': '0.1',
                 'freeCashFlow': '0.1',
             },
             '2016': {
-                'roic': '0.1',
+                'roic': '0.8',
                 'eps': '0.1',
                 'equity': '0.1',
                 'sales': '0.1',
                 'freeCashFlow': '0.1',
             },
             '2015': {
-                'roic': '0.1',
+                'roic': '0.8',
+                'eps': '0.1',
+                'equity': '0.1',
+                'sales': '0.1',
+                'freeCashFlow': '0.1',
+            },
+            '2014': {
+                'roic': '0.8',
                 'eps': '0.1',
                 'equity': '0.1',
                 'sales': '0.1',
@@ -87,7 +94,7 @@ function mockData() {
                     name: key,
                     labels: [],
                     data: [],
-                    averages: [ 0, 0, 0 ]
+                    averages: []
                 }
 
                 allChartsOptions[ key ].labels.push( year )
@@ -98,6 +105,28 @@ function mockData() {
 
 
         } )
+
+    // Calculate averages
+
+    Object.values( allChartsOptions ).forEach( optionsForKey => {
+        
+        var y10 = optionsForKey.data.slice(0)
+        var y5 = optionsForKey.data.slice( -5 )
+        var y3 = optionsForKey.data.slice( -3 )
+
+        function getAveragePct( array ) {
+            var total = array.reduce( ( a, b ) => Number( a ) + Number( b ), 0 )
+            var average = ( total / array.length )
+            var pct = average * 100
+            return pct.toFixed( 1 ) + '%'
+        }
+        // var arrAvg = arr => arr.reduce( ( a, b ) => Number(a) + Number(b), 0 ) / arr.length
+
+        var averages = [ getAveragePct( y10 ), getAveragePct( y5 ), getAveragePct( y3 ) ]
+
+        optionsForKey.averages = averages
+
+    });
 
 
     Chart.defaults.global.defaultFontColor = '#fff';
@@ -173,8 +202,8 @@ function mockData() {
             
         } )
 
-        // Set up averages
-        ctx.parentElement.querySelector( '.avg-container' ).innerHTML = `Averages - 10Y: ${ options.averages[ 0 ] }, 5Y: ${ options.averages[ 1 ] }, 3Y: ${ options.averages[ 2 ]},`
+        // Display averages
+        ctx.parentElement.querySelector( '.avg-container' ).innerHTML = `<span>Averages</span> 10Y <b>${ options.averages[ 0 ] }</b> / 5Y <b>${ options.averages[ 1 ] }</b> / 3Y <b>${ options.averages[ 2 ]}</b>`
 
     } )
 }
