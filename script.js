@@ -81,12 +81,13 @@ function mockData() {
         .forEach( ( [ year, rates ] ) => {
 
             Object.entries( rates ).forEach( ( [ key, value ] ) => {
-                console.log( key )
+
                 allChartsOptions[ key ] = allChartsOptions[ key ]
                     || {
                     name: key,
                     labels: [],
-                    data: []
+                    data: [],
+                    averages: [ 0, 0, 0 ]
                 }
 
                 allChartsOptions[ key ].labels.push( year )
@@ -101,10 +102,11 @@ function mockData() {
 
     Chart.defaults.global.defaultFontColor = '#fff';
     Chart.defaults.global.defaultFontFamily = 'Roboto';
+    
 
     Object.entries( allChartsOptions ).forEach( ( [ key, options ], index ) => {
 
-        var ctx = document.getElementById( 'chart' + ( index + 1 ) ).getContext( '2d' );
+        var ctx = document.getElementById( 'chart' + ( index + 1 ) )//.getContext( '2d' );
 
         var chart = new Chart( ctx, {
             type: 'bar',
@@ -142,6 +144,8 @@ function mockData() {
                     display: true,
                     text: options.name === 'freeCashFlow' ? 'FREE CASH FLOW' : options.name.toUpperCase(),
                     fontSize: 30,
+                    padding: 40,
+                    fontStyle: '100',
                 },
                 legend: {
                     display: false, 
@@ -168,6 +172,9 @@ function mockData() {
             },
             
         } )
+
+        // Set up averages
+        ctx.parentElement.querySelector( '.avg-container' ).innerHTML = `Averages - 10Y: ${ options.averages[ 0 ] }, 5Y: ${ options.averages[ 1 ] }, 3Y: ${ options.averages[ 2 ]},`
 
     } )
 }

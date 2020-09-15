@@ -132,24 +132,33 @@ form button:focus {
 }
 
 .data>div {
-    /* height: calc(600pvx); */
-    width: calc(50% - 61px - 40px);
-    padding: 60px 30px 0;
+    width: calc(50% - 61px - 30px);
+    padding: 20px 30px 0;
+    position: relative;
 }
 
 
 @media (max-width: 1000px) {
     .data>div {
-        width: calc(100% - 61px - 40px);
+        width: calc(100% - 61px - 30px);
     }
 
 }
 
 .data div canvas {
-    padding: 20px;
+    padding: 20px 20px 100px;
     background: #8fa8b3;
 }
 
+.data .avg-container {
+    /* width: 50px; */
+    /* height: 50px; */
+    /* background-color: red; */
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    color: #fff;
+}
 
 
 
