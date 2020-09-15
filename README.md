@@ -1,6 +1,6 @@
 # past-company-rates-dashboard
 
-Dashboard to display past company rates
+Dashboard to display a set of past financial data of a US company. 
 
 ## Motivation
 
